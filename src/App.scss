@@ -1,0 +1,446 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-size: 62.5%;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+$main-color: #ba1333;
+$h1: #20232a;
+$font: lighten($h1, 10%);
+$project-p: lighten(#7a7a82, 20%);
+$work-button: #32394b;
+$p-button: #3c455a;
+$updated-color: #e9e9eb;
+
+$mobile: "only screen and (
+  max-width: 600px
+)";
+
+$tablet: "only screen and (
+  max-width: 750px
+)";
+
+$small: "only screen and (
+  max-width: 450px
+)";
+
+.App {
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  margin: 0 auto;
+
+  h1 {
+    color: $h1;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    color: $font;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: $h1;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $h1;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $h1;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: $h1;
+  }
+
+  label {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-right: 7px;
+    color: $h1;
+  }
+
+  input {
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px $project-p;
+    padding: 5px;
+    max-width: 100px;
+  }
+
+  span {
+    color: $main-color;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-position: inside;
+    list-style-type: circle;
+    font-size: 1rem;
+    padding: 0px 25px;
+  }
+  li {
+    margin: 10px 0;
+  }
+
+  button {
+    border: 0;
+    background-image: linear-gradient(
+      to bottom right,
+      $p-button,
+      lighten($p-button, 5%)
+    );
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px $h1;
+    color: white;
+    padding: 7px 13px;
+    font-size: 1rem;
+    font-weight: 400;
+    outline: none;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: $font;
+    margin: 0 20px;
+    font-size: 1.1rem;
+    span {
+      color: $main-color;
+      visibility: hidden;
+    }
+    &:hover {
+      cursor: pointer;
+      span {
+        visibility: visible;
+      }
+    }
+  }
+
+  nav {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+  }
+
+  .navLogoContainer {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    img {
+      height: 24px;
+      width: 24px;
+    }
+    h3 {
+      margin-left: 5px;
+    }
+  }
+
+  .controlsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    box-shadow: 2px 2px 5px $project-p;
+    background-image: linear-gradient(
+      to bottom right,
+      $updated-color,
+      darken($updated-color, 5%)
+    );
+  }
+
+  .boardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    h3 {
+      margin: 20px 0;
+    }
+  }
+
+  .controlsInputs {
+    @media #{$small} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      div {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .controlsButtons {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    @media #{$tablet} {
+      width: 80%;
+    }
+    @media #{$small} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .controlsInputs {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 25px;
+  }
+
+  .rulesContainer,
+  .automataContainer {
+    background-image: linear-gradient(
+      to bottom right,
+      $p-button,
+      darken($p-button, 10%)
+    );
+    color: white;
+    padding: 25px 5%;
+    h2 {
+      color: white;
+    }
+    p {
+      color: white;
+      margin: 15px 0;
+    }
+  }
+
+  .configContainer {
+    padding: 25px 10%;
+  }
+
+  .configTextContent {
+    p {
+      margin: 15px 0;
+    }
+  }
+
+  .configTypeContainer {
+    padding: 20px 0;
+  }
+
+  .configItemsList {
+    padding: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .configItem{
+    margin: 7px;
+  }
+
+  .turingContainer {
+    padding: 25px 10%;
+    p {
+      margin: 15px 0;
+    }
+  }
+
+  .contactContainer {
+    width: 100%;
+    padding: 25px 3%;
+    box-shadow: 2px 2px 5px $project-p;
+    background-image: linear-gradient(
+      to bottom right,
+      $updated-color,
+      darken($updated-color, 5%)
+    );
+
+    p {
+      margin: 15px 0;
+    }
+
+    a {
+      margin: 0 20px 0 0;
+      color: $main-color;
+      @media #{$mobile} {
+        margin: 0;
+      }
+    }
+  }
+
+  .contactLinks {
+    @media #{$mobile} {
+      display: flex;
+      flex-direction: column;
+      
+      a{
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .gridContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .cellContainerDead {
+    display: flex;
+    padding: 10px;
+    margin: 3px 3px 3px 0;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px $project-p;
+  }
+
+  .cellContainerLive {
+    display: flex;
+    padding: 10px;
+    margin: 3px 3px 3px 0;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px $project-p;
+  }
+}
