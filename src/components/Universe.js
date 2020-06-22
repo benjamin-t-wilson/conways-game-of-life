@@ -53,6 +53,36 @@ export default class Universe {
     return new Universe(this.generation, this.nextGeneration);
   }
 
+  addGenerationExtremeLife() {
+    console.log("life");
+    this.liveCells.forEach((item) => {
+      this.calculateLiveCellsNeighbors(item);
+    });
+
+    this.deadCells.forEach((item) => {
+      this.calculateDeadCellsNeighborsExtremeLife(item);
+    });
+
+    this.generation++;
+
+    return new Universe(this.generation, this.nextGeneration);
+  }
+
+  addGenerationExtremeDeath() {
+    console.log("death");
+    this.liveCells.forEach((item) => {
+      this.calculateLiveCellsNeighbors(item);
+    });
+
+    this.deadCells.forEach((item) => {
+      this.calculateDeadCellsNeighborsExtremeDeath(item);
+    });
+
+    this.generation++;
+
+    return new Universe(this.generation, this.nextGeneration);
+  }
+
   calculateLiveCellsNeighbors(position) {
     let liveNeighbors = 0;
 
@@ -89,6 +119,46 @@ export default class Universe {
     }
 
     if (liveNeighbors === 3)
+      this.nextGeneration.set(position.x + " , " + position.y, {
+        x: position.x,
+        y: position.y,
+      });
+  }
+
+  calculateDeadCellsNeighborsExtremeLife(position) {
+    let liveNeighbors = 0;
+
+    for (let i = position.x - 1; i <= position.x + 1; i++) {
+      for (let j = position.y - 1; j <= position.y + 1; j++) {
+        if (i === position.x && j === position.y) continue;
+
+        if (this.isCellAlive(i + " , " + j)) {
+          liveNeighbors++;
+        }
+      }
+    }
+
+    if (liveNeighbors > 1)
+      this.nextGeneration.set(position.x + " , " + position.y, {
+        x: position.x,
+        y: position.y,
+      });
+  }
+
+  calculateDeadCellsNeighborsExtremeDeath(position) {
+    let liveNeighbors = 0;
+
+    for (let i = position.x - 1; i <= position.x + 1; i++) {
+      for (let j = position.y - 1; j <= position.y + 1; j++) {
+        if (i === position.x && j === position.y) continue;
+
+        if (this.isCellAlive(i + " , " + j)) {
+          liveNeighbors++;
+        }
+      }
+    }
+
+    if (liveNeighbors < 1)
       this.nextGeneration.set(position.x + " , " + position.y, {
         x: position.x,
         y: position.y,

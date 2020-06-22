@@ -35,6 +35,7 @@ export default class App extends Component {
       gameRunning: false,
       msg: before,
       speed: 1000,
+      random: false,
     };
 
     this.handleColumnChange = this.handleColumnChange.bind(this);
@@ -46,12 +47,36 @@ export default class App extends Component {
     this.resetGame = this.resetGame.bind(this);
     this.handleSpeed = this.handleSpeed.bind(this);
     this.stepForward = this.stepForward.bind(this);
+    this.toggleRandom = this.toggleRandom.bind(this);
+  }
+
+  toggleRandom() {
+    this.setState({
+      random: !this.state.random,
+    });
   }
 
   runGame() {
-    this.setState({
-      universe: this.state.universe.addGeneration(),
-    });
+    if (this.state.random) {
+      const randomNum = Math.floor(Math.random() * 25);
+      if (randomNum === 0) {
+        this.setState({
+          universe: this.state.universe.addGenerationExtremeDeath(),
+        });
+      } else if (randomNum === 24) {
+        this.setState({
+          universe: this.state.universe.addGenerationExtremeLife(),
+        });
+      } else {
+        this.setState({
+          universe: this.state.universe.addGeneration(),
+        });
+      }
+    } else {
+      this.setState({
+        universe: this.state.universe.addGeneration(),
+      });
+    }
   }
 
   stepForward() {
@@ -233,6 +258,8 @@ export default class App extends Component {
           stopGame={this.stopGame}
           resetGame={this.resetGame}
           stepForward={this.stepForward}
+          random={this.state.random}
+          toggleRandom={this.toggleRandom}
         />
         <Board
           msg={this.state.msg}
