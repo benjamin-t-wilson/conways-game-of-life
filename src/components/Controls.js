@@ -62,6 +62,18 @@ class Controls extends React.Component {
             Next Generation
           </button>
         </div>
+        <div className="randomContainer">
+          <p>
+            Random Mode:<span>{` ${this.props.random}`}</span>
+          </p>
+          <button
+            onClick={() => {
+              this.props.toggleRandom();
+            }}
+          >
+            Toggle Random
+          </button>
+        </div>
       </div>
     );
   }
