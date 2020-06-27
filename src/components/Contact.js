@@ -1,6 +1,6 @@
 import React from "react";
 
-class Ctonact extends React.Component {
+class Contact extends React.Component {
   render() {
     return (
       <div className="contactContainer">
@@ -34,4 +34,4 @@ class Ctonact extends React.Component {
   }
 }
 
-export default Ctonact;
+export default Contact;
